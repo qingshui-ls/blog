@@ -1,6 +1,24 @@
 # 博客项目
 * admin模块是权限管理系统
-* api模块是登录，注册，发布，排行等实现
+* api模块是登录，注册，发布，排行等实现,登录拦截,统一日志记录，统一异常处理，统一返回Result。
+```
+@Data
+@AllArgsConstructor
+public class Result {
+    private boolean success;
+    private int code;
+    private String msg;
+    private Object data1;
+
+    public static Result success(Object data) {
+        return new Result(true, 200, "success", data);
+    }
+
+    public static Result fail(int code, String msg) {
+        return new Result(false, code, msg, null);
+    }
+}
+```
 ## 前端框架采用Vue3
 ### api请求代码展示如下：
 * article.js
