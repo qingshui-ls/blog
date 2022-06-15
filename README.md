@@ -2,7 +2,7 @@
 * admin模块是权限管理系统
 * api模块是登录，注册，发布，排行等实现
 ## 前端框架采用Vue3
-* 部分代码展示如下：
+* api请求代码展示如下：
 
 ```
 import request from '@/request'
