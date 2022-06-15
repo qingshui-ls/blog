@@ -2,8 +2,8 @@
 * admin模块是权限管理系统
 * api模块是登录，注册，发布，排行等实现
 ## 前端框架采用Vue3
-* api请求代码展示如下：
-
+### api请求代码展示如下：
+* article.js
 ```
 import request from '@/request'
 
@@ -84,5 +84,54 @@ export function getArticleById(id) {
     method: 'post'
   })
 }
+
+```
+
+* login.js
+
+```
+  import request from '@/request'
+
+export function login(account, password) {
+  const data = {
+    account,
+    password
+  }
+  return request({
+    url: '/login',
+    method: 'post',
+    data
+  })
+}
+
+export function logout(token) {
+  return request({
+    headers: {'Authorization': token},//在后端通过headers获取token
+    url: '/logout',
+    method: 'get'
+  })
+}
+
+export function getUserInfo(token) {
+  return request({
+    headers: {'Authorization': token},
+    url: '/users/currentUser',
+    method: 'get'
+  })
+}
+
+export function register(account, nickname, password) {
+  const data = {
+    account,
+    nickname,
+    password
+  }
+  return request({
+    url: '/register',
+    method: 'post',
+    data
+  })
+}
+
 
 ```
